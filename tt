@@ -1,8 +1,9 @@
- (function () {
+(function () {
         function getData() {
-            fetch('https://hd.oppo.com/platform/receivelist?aid=1334&code=oppofensiri_888_0429_3&source_type=&s_channel=')
+            fetch('https://hd.oppo.com/platform/receivelist?aid=1334&code=oppofensiri_888_0429_3&source_type=504&s_channel=h5_m')
                 .then(v => v.json())
                 .then(data => {
+                    console.log("查询优惠券结果:",data)
                     if (data.data.length > 0) {
                         postData(data.data[0])
                     }else{
@@ -22,7 +23,10 @@
                 }
             })
                 .then(res => res.json())
-                .then(v => console.log(v))
+                .then(v => {
+                    console.log(v)
+                    postData(data)
+                })
         }
         getData()
     })()
