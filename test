@@ -1,0 +1,13 @@
+fetch("https://hd.oppo.com/platform/receive", {
+                method: 'POST',
+                body:`aid=1334&coupons_activity_id=50000855&coupon_mid=399ccfef66ad723571995aaf4d1049c3&coupons_code=oppofensiri_888_0429_3`,
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then(v => {
+                    console.log(v)
+                   // postData(data)
+                })
