@@ -1,0 +1,28 @@
+ (function () {
+        function getData() {
+            fetch('https://hd.oppo.com/platform/receivelist?aid=1334&code=oppofensiri_888_0429_3&source_type=&s_channel=')
+                .then(v => v.json())
+                .then(data => {
+                    if (data.data.length > 0) {
+                        postData(data.data[0])
+                    }else{
+                        getData()
+                    }
+                })
+        }
+
+        function postData(data) {
+            console.log(data)
+            fetch("https://hd.oppo.com/platform/receive", {
+                method: 'POST',
+                body:`aid=1334&coupons_activity_id=${data.couponsActivityId}&coupon_mid=${data.couponMid}&coupons_code=oppofensiri_888_0429_3`,
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then(v => console.log(v))
+        }
+        getData()
+    })()
